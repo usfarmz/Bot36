@@ -1,4 +1,10 @@
 <?php
+// Vérifie qu'on reçoit bien une requête POST
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(200); // on renvoie 200 sinon Telegram va retenter
+    exit;
+}
+
 $token = "8532082529:AAHCiDhoHsPzp43m5tX4fPsZFFwRqeRTTAw";
 $update = json_decode(file_get_contents('php://input'), true);
 
